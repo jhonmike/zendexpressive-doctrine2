@@ -3,26 +3,10 @@
 return [
     'dependencies' => [
         'invokables' => [
-            Zend\Expressive\Router\RouterInterface::class => Zend\Expressive\Router\ZendRouter::class,
-            App\Action\Home\Service::class => App\Action\Home\Service::class
+            Zend\Expressive\Router\RouterInterface::class => Zend\Expressive\Router\ZendRouter::class
         ],
-        'factories' => [
-            App\Action\User\Service::class => App\Action\User\Factory::class,
-        ],
+        'factories' => [],
     ],
 
-    'routes' => [
-        [
-            'name' => 'home',
-            'path' => '/',
-            'middleware' => App\Action\Home\Service::class,
-            'allowed_methods' => ['GET'],
-        ],
-        [
-             'name' => 'user',
-             'path' => '/user',
-             'middleware' => App\Action\User\Service::class,
-             'allowed_methods' => ['GET'],
-         ],
-    ],
+    'routes' => [],
 ];

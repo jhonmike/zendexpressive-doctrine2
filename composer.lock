@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "edb6b19347b0077a70bf18f9082c7144",
-    "content-hash": "49deeeb908ba42feb00e0f02a548503a",
+    "hash": "fb8ff4dfb2ad01651c294271d3632f32",
+    "content-hash": "52b1e6f4cb4ff6b7004db7f95fe46e11",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -634,6 +634,52 @@
             "time": "2016-09-10 18:51:13"
         },
         {
+            "name": "mtymek/expressive-config-manager",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mtymek/expressive-config-manager.git",
+                "reference": "bde7d5eee81b2cc2fde71e03dbda9a5006b344a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mtymek/expressive-config-manager/zipball/bde7d5eee81b2cc2fde71e03dbda9a5006b344a5",
+                "reference": "bde7d5eee81b2cc2fde71e03dbda9a5006b344a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.7",
+                "squizlabs/php_codesniffer": "^2.3",
+                "zendframework/zend-config": "^2.5",
+                "zendframework/zend-servicemanager": "^2.6"
+            },
+            "suggest": {
+                "zendframework/zend-config": "Allows loading configuration from XML, INI, YAML and JSON files",
+                "zendframework/zend-stdlib": "Allows removing configuration keys and globbing on Windows platform"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Expressive\\ConfigManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mateusz Tymek",
+                    "email": "mtymek@gmail.com"
+                }
+            ],
+            "description": "Lightweight library for merging and caching application config",
+            "time": "2016-03-17 16:35:07"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -740,7 +786,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/47cd1dcac8df83b6f8a5fe85e3b743d079160643",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9b2c146291b6a5a1d22a837e86ca77ade3941f47",
                 "reference": "47cd1dcac8df83b6f8a5fe85e3b743d079160643",
                 "shasum": ""
             },
