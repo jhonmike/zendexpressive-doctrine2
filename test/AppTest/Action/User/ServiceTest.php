@@ -14,19 +14,30 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
 {
     use \AppTest\Helper\UserTrait;
 
-    private $gateway;
-
-    protected function setUp()
-    {
-        $user = $this->buildUser();
-        $this->gateway = $this->prophesize(Gateway::class);
-        $this->gateway->getUsers()->willReturn([$user]);
-    }
-
     public function testResponse()
     {
-        $service = new Service($this->gateway->reveal());
+        $user = $this->buildUser();
+        $gateway = $this->prophesize(Gateway::class);
+        $gateway->getUsers()->willReturn([$user]);
+
+        $service = new Service($gateway->reveal());
         $response = $service(new ServerRequest(['/user']), new Response(), function () {});
         static::assertTrue($response instanceof Response);
+    }
+
+    public function testResult()
+    {
+        $user = $this->buildUser([
+            'name' => 'Teste'
+        ]);
+        $gateway = $this->prophesize(Gateway::class);
+        $gateway->getUsers()->willReturn([$user]);
+
+        $service = new Service($gateway->reveal());
+        $response = $service(new ServerRequest(['/user']), new Response(), function () {});
+
+        $json = json_decode((string) $response->getBody());
+        static::assertCount(1, $json);
+        static::assertSame($json[0]->name, $user->getName());
     }
 }

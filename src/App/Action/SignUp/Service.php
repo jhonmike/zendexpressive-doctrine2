@@ -1,26 +1,37 @@
 <?php
 
-namespace App\Action;
+namespace App\Action\SignUp;
 
-class SignUp 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Zend\Diactoros\Response\JsonResponse;
+
+/**
+ * @author Jhon Mike <developer@jhonmike.com.br>
+ */
+class Service 
 {
+    private $gateway;
+
+    public function __construct($gateway)
+    {
+        $this->gateway = $gateway;
+    }
+
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
         callable $next = null
     ) : JsonResponse
     {
-        $users = $this->gateway->getUsers();
-        $userArray = [];
+        $email = $request->getAttribute('email');
+        $password = $request->getAttribute('password');
+        $entity = $this->gateway->getUserByEmailAndPassword($email, $password);
 
-        if (count($users) === 0) {
-            return new JsonResponse($userArray);
+        if ($entity) {
+            return new JsonResponse(['error' => 'Falha o tentar logar!']);
         }
 
-        foreach ($users as $user) {
-            $userArray[] = $user->toArray();
-        }
-
-        return new JsonResponse($userArray);
+        return new JsonResponse($entity);
     }
 }
